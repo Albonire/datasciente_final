@@ -1,0 +1,5 @@
+variable,n_faltantes,pct_faltantes,mecanismo_hipotesis,evidencia_empirica,tratamiento_propuesto,justificacion
+avg_order_value_90d,4405,73.4%,Estructural,100.0% de faltantes coinciden con transactions_90d==0,Indicador binario avg_order_missing e imputación artificial (0),No es un dato perdido; no puede existir promedio sin órdenes.
+education_level,148,2.5%,MAR,Su probabilidad de faltar puede explicarse por el ingreso mensual y otras observables,Imputación con predictores o moda estratificada,"El faltante no es puramente aleatorio, sino que depende de otras variables observadas."
+satisfaction_score,261,4.3%,MNAR,"Según el diccionario, falta más en clientes insatisfechos",Añadir indicador binario (satisfaction_missing) e imputar con constante baja,Al faltar el dato se revela información (insatisfacción).
+promo_open_rate_90d,168,2.8%,MCAR,Patrón de faltante no correlacionado con ninguna variable,Imputación simple por mediana o media,"Si es completamente al azar, la imputación por medida de tendencia central es eficiente."

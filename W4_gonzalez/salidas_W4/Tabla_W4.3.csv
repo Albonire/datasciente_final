@@ -1,0 +1,3 @@
+pipeline,accuracy_val,roc_auc_val,f1_val,accuracy_test,roc_auc_test,f1_test
+Ingenuo,0.6715,0.7219,0.6040,,,
+Coherente,0.6655,0.7235,0.5996,0.6565,0.7183,0.5985

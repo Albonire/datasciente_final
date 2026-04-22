@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>{{文档标题}}</title>
+<style>
+  @font-face {
+    font-family: "TsangerJinKai02";
+    src: url("assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 18mm 15mm 18mm;
+    background: #f5f4ed;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment: #f5f4ed;
+    --ivory:     #faf9f5;
+    --sand:      #e8e6dc;
+    --near-black:#141413;
+    --dark-warm: #3d3d3a;
+    --charcoal:  #4d4c48;
+    --olive:     #5e5d59;
+    --stone:     #87867f;
+    --brand:     #1B365D;
+    --border:    #e8e6dc;
+    --border-soft:#e5e3d8;
+    --tag-bg:    #E4ECF5;
+  }
+
+  html, body { background: var(--parchment); }
+
+  body {
+    color: var(--near-black);
+    font-family: "TsangerJinKai02", "Source Han Serif SC",
+                 "Noto Serif CJK SC", "Songti SC", Georgia, serif;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+
+  .serif {
+    font-family: "TsangerJinKai02", "Source Han Serif SC",
+                 "Noto Serif CJK SC", "Songti SC", Georgia, serif;
+  }
+
+  /* ========== HEADER ========== */
+  .header {
+    border-left: 2.5pt solid var(--brand);
+    border-radius: 1.5pt;
+    padding-left: 8pt;
+    margin-bottom: 14pt;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20pt;
+  }
+  .title-block {
+    flex: 1;
+  }
+  .eyebrow {
+    font-size: 8.5pt;
+    color: var(--brand);
+    letter-spacing: 0.5pt;
+    text-transform: uppercase;
+    margin-bottom: 4pt;
+  }
+  h1 {
+    font-family: "TsangerJinKai02", "Source Han Serif SC",
+                 "Noto Serif CJK SC", Georgia, serif;
+    font-size: 24pt;
+    font-weight: 500;
+    color: var(--near-black);
+    line-height: 1.15;
+    margin-bottom: 5pt;
+  }
+  .subtitle {
+    font-size: 11pt;
+    color: var(--olive);
+    line-height: 1.4;
+  }
+  .meta {
+    font-size: 8.5pt;
+    color: var(--stone);
+    text-align: right;
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+
+  /* ========== METRICS ========== */
+  /* 横向 baseline 布局 —— 和 resume.html 一致的 kami native 姿态。
+     背景透明、无边框，用 typography 本身承担层次，不加容器。 */
+  .metrics {
+    display: flex;
+    gap: 14pt;
+    margin-bottom: 18pt;
+    padding: 4pt 0 6pt 0;
+    border-bottom: 0.3pt dotted var(--border);
+  }
+  .metric {
+    flex: 1;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 4pt;
+    break-inside: avoid;
+  }
+  .metric-value {
+    font-family: "TsangerJinKai02", "Source Han Serif SC", Georgia, serif;
+    font-size: 20pt;
+    font-weight: 500;
+    color: var(--brand);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.2pt;
+  }
+  .metric-label {
+    font-size: 8.5pt;
+    color: var(--olive);
+    line-height: 1.3;
+  }
+
+  /* ========== SECTIONS ========== */
+  section { margin-bottom: 18pt; break-inside: avoid; }
+  section:last-of-type { margin-bottom: 0; }
+
+  h2 {
+    font-family: "TsangerJinKai02", "Source Han Serif SC", Georgia, serif;
+    font-size: 13pt;
+    font-weight: 500;
+    color: var(--near-black);
+    margin-bottom: 6pt;
+    border-left: 2.5pt solid var(--brand);
+    border-radius: 1.5pt;
+    padding-left: 8pt;
+  }
+  h2 .sub {
+    font-size: 8.5pt;
+    color: var(--stone);
+    font-weight: 400;
+    margin-left: 6pt;
+  }
+
+  p { margin-bottom: 6pt; line-height: 1.45; }
+  p:last-child { margin-bottom: 0; }
+
+  .lead {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: var(--dark-warm);
+    margin-bottom: 14pt;
+  }
+
+  .hl { color: var(--brand); font-weight: 500; }
+
+  /* ========== 2-column grid ========== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18pt;
+  }
+
+  /* ========== 短横线 list（代替默认 bullet） ========== */
+  ul.dash {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.dash li {
+    position: relative;
+    padding-left: 14pt;
+    margin-bottom: 4pt;
+    line-height: 1.45;
+  }
+  ul.dash li::before {
+    content: "\2013";
+    position: absolute;
+    left: 0;
+    color: var(--brand);
+  }
+
+  /* ========== Timeline (横向进度点) ========== */
+  .timeline {
+    display: flex;
+    gap: 12pt;
+    margin-top: 6pt;
+  }
+  .tl-step {
+    flex: 1;
+    break-inside: avoid;
+  }
+  .tl-year {
+    font-family: "TsangerJinKai02", "Source Han Serif SC", Georgia, serif;
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--brand);
+    margin-bottom: 2pt;
+  }
+  .tl-head {
+    font-size: 10pt;
+    font-weight: 500;
+    color: var(--near-black);
+    margin-bottom: 2pt;
+  }
+  .tl-body {
+    font-size: 8.5pt;
+    color: var(--olive);
+    line-height: 1.4;
+  }
+
+  /* ========== Tag ========== */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);    /* 实色！不要 rgba */
+    color: var(--brand);
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 1pt 5pt;
+    border-radius: 3pt;
+    letter-spacing: 0.1pt;
+    margin-right: 3pt;
+  }
+
+  /* ========== Callout / 高亮块 ========== */
+  /* 参考 resume.html .team-culture：透明底 + 单左侧 brand 竖条。
+     不做容器也不做圆角，气质是"一条旁注"而不是"一个卡片"。 */
+  .callout {
+    background: transparent;
+    border-left: 1.8pt solid var(--brand);
+    padding: 4pt 0 4pt 14pt;
+    margin: 10pt 0;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--olive);
+    break-inside: avoid;
+  }
+  .callout .hl, .callout .em-brand { color: var(--brand); }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    margin-top: 18pt;
+    padding-top: 6pt;
+    border-top: 0.3pt dotted var(--border);
+    font-size: 8pt;
+    color: var(--stone);
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.3pt;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="meta">Guía de Referencia Rápida · Ciencia de Datos</div>
+    <div class="title">No todo número es una variable continua</div>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <h3>1. Nominales (Finitas sin orden)</h3>
+      <div class="metric">
+        <div class="metric-label">Operaciones Válidas</div>
+        <div class="metric-val">Igualdad (==), Moda</div>
+      </div>
+      <p class="text"><strong>El Riesgo:</strong> Representarlos como enteros (1, 2, 3...) fuerza falsas nociones de distancia matemática.<br><strong>Solución:</strong> One-Hot Encoding.</p>
+    </div>
+
+    <div class="col">
+      <h3>2. Ordinales (Finitas con orden)</h3>
+      <div class="metric">
+        <div class="metric-label">Operaciones Válidas</div>
+        <div class="metric-val">Desigualdad (>), Mediana</div>
+      </div>
+      <p class="text"><strong>El Riesgo:</strong> Asumir distancias equidistantes entre rangos (ej. 1 a 2 = 4 a 5).<br><strong>Solución:</strong> Preservar como enteros si la escala subyacente es lineal, o usar codificaciones ordinales monótonas.</p>
+    </div>
+  </div>
+  
+  <div class="grid">
+    <div class="col">
+      <h3>3. Composicionales (Suma = 1)</h3>
+      <div class="metric">
+        <div class="metric-label">Operaciones Válidas</div>
+        <div class="metric-val">Log-Ratios (CLR/ALR)</div>
+      </div>
+      <p class="text"><strong>El Riesgo:</strong> Correlaciones negativas espurias forzadas por la restricción de suma (un canal sube, el otro debe bajar).<br><strong>Solución:</strong> Transformación Centered Log Ratio.</p>
+    </div>
+
+    <div class="col">
+      <h3>4. Cíclicas (Reloj, Calendario)</h3>
+      <div class="metric">
+        <div class="metric-label">Operaciones Válidas</div>
+        <div class="metric-val">Trigonometría (Seno/Cos)</div>
+      </div>
+      <p class="text"><strong>El Riesgo:</strong> El salto artificial entre el fin y el inicio del ciclo (hora 23 y hora 0) crea distancias matemáticas máximas cuando en realidad son adyacentes.<br><strong>Solución:</strong> Codificar en 2 dimensiones usando sen/cos.</p>
+    </div>
+  </div>
+  
+  <div style="margin-top:20pt;">
+    <h3>Gestión Semántica de Faltantes</h3>
+    <ul>
+      <li><strong>Estructural:</strong> No falta, "no aplica". Ej: Valor de orden sin compras. Se debe crear indicador binario e imputar con constante cero.</li>
+      <li><strong>MNAR:</strong> Falta porque el usuario no quiere revelarlo (ej. muy insatisfecho). Agregar indicador binario es crucial.</li>
+      <li><strong>MAR/MCAR:</strong> Falta aleatoriamente o explicable por otras variables. Imputar con modelos (iterative) o tendencia central.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

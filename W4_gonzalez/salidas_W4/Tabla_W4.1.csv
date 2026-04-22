@@ -1,0 +1,12 @@
+variable,tipo_semantico,soporte,riesgo_si_mal_tratado,operacion_valida,operacion_invalida
+region,Nominal,Conjunto finito sin orden,Falsa noción de distancia y orden,"Igualdad (==), moda","Mayor/menor (>), suma, media"
+plan_type,Nominal,Conjunto finito sin orden,Falsa noción de distancia y orden,"Igualdad (==), moda","Mayor/menor (>), suma, media"
+education_level,Ordinal,Conjunto finito ordenado,Pérdida de jerarquía u asunción de distancias equidistantes,"Mayor/menor (>), mediana","Suma, media (estrictamente)"
+loyalty_tier,Ordinal,Conjunto finito ordenado,Pérdida de jerarquía,"Mayor/menor (>), mediana","Suma, media (estrictamente)"
+satisfaction_score,Ordinal,"Enteros [1,10]",Falsa asunción de intervalo continuo,"Mayor/menor, mediana","Promedio (estrictamente, asume distancias iguales)"
+promo_open_rate_90d,Proporción,"Continuo [0,1]","Predicciones fuera de rango [0,1]","Suma ponderada, media",Sumas no acotadas
+share_web,Composición,Simplex (suma=1),Correlaciones espurias por restricción de suma,Centered Log Ratio (CLR),Correlación de Pearson cruda
+share_mobile,Composición,Simplex (suma=1),Correlaciones espurias por restricción de suma,Centered Log Ratio (CLR),Correlación de Pearson cruda
+share_store,Composición,Simplex (suma=1),Correlaciones espurias por restricción de suma,Centered Log Ratio (CLR),Correlación de Pearson cruda
+share_partner,Composición,Simplex (suma=1),Correlaciones espurias por restricción de suma,Centered Log Ratio (CLR),Correlación de Pearson cruda
+peak_hour_local,Cíclica,Enteros mod 24,Salto artificial entre 23 y 0,Seno/Coseno,Distancia euclidiana directa

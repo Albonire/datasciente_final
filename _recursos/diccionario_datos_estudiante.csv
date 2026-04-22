@@ -1,0 +1,35 @@
+column_name,logical_type,description,availability_stage,leakage_risk,notes
+record_id,technical_id,identificador técnico único del registro,snapshot,alto,no usar como predictor
+customer_id,identifier,identificador del cliente; puede contener duplicados por ingestión,snapshot,alto,auditar duplicados antes de modelar
+snapshot_date,temporal_date,fecha de corte del registro,snapshot,medio,útil para partición temporal o ingeniería temporal
+region,categorical_nominal,región comercial,snapshot,bajo,contiene categorías raras
+device_type,categorical_nominal,dispositivo predominante de uso,snapshot,bajo,evitar codificación ordinal arbitraria
+plan_type,categorical_nominal,tipo de plan contratado,snapshot,bajo,nominal
+education_level,categorical_ordinal,nivel educativo auto-reportado (1-5),snapshot,medio,ordinal con faltantes MAR
+loyalty_tier,categorical_ordinal,nivel de fidelización (1-4),snapshot,bajo,ordinal
+age,numeric_continuous,edad aproximada en años,snapshot,bajo,escala física interpretable
+tenure_days,numeric_positive,antigüedad de la cuenta en días,snapshot,bajo,positiva y sesgada
+recency_days,numeric_positive,días desde la última actividad significativa,snapshot,bajo,positiva y sesgada
+active_days_90d,count_exposure,días activos en los 90 días previos,snapshot,bajo,sirve como exposición
+sessions_90d,count,número de sesiones en los 90 días previos,snapshot,bajo,conteo sobredisperso
+transactions_90d,count,número de transacciones en los 90 días previos,snapshot,bajo,conteo con muchos ceros
+avg_order_value_90d,numeric_positive,valor promedio por orden en los 90 días previos,snapshot,medio,faltante estructural cuando no hay transacciones
+gross_revenue_90d,numeric_positive,ingreso bruto observado en los 90 días previos,snapshot,medio,colineal con otras variables monetarias
+monthly_income_est,numeric_positive,ingreso mensual estimado,snapshot,alto,incluye faltantes MAR/MNAR y algunos outliers de unidad
+credit_limit_est,numeric_positive,límite de crédito estimado,snapshot,medio,muy correlacionado con income
+monetary_value_score,numeric_continuous,índice monetario interno derivado,snapshot,medio,fuertemente colineal
+debt_to_income_ratio,ratio_positive,razón deuda/ingreso,snapshot,bajo,no está acotada en 1
+promo_open_rate_90d,proportion,proporción de aperturas promocionales,snapshot,medio,tiene faltantes MCAR
+support_tickets_90d,count,tickets de soporte en 90 días,snapshot,bajo,conteo sobredisperso
+satisfaction_score,categorical_ordinal,satisfacción ordinal 1-10,snapshot,medio,faltante más frecuente en clientes insatisfechos
+balance_change_30d,signed_heavy_tail,variación de balance en 30 días,snapshot,medio,con signo y colas pesadas
+share_web,compositional_share,participación del canal web en interacciones,snapshot,bajo,suma con otros shares a 1
+share_mobile,compositional_share,participación del canal móvil en interacciones,snapshot,bajo,suma con otros shares a 1
+share_store,compositional_share,participación del canal tienda en interacciones,snapshot,bajo,suma con otros shares a 1
+share_partner,compositional_share,participación del canal partner en interacciones,snapshot,bajo,suma con otros shares a 1
+peak_hour_local,temporal_cyclic,hora local de mayor actividad (0-23),snapshot,bajo,cíclica
+week_of_year,temporal_cyclic,semana del año de snapshot,snapshot,bajo,cíclica/estacional
+behavioral_variability_index,numeric_nonlinear_proxy,índice no lineal de variabilidad conductual,snapshot,medio,relación no lineal con promo_open_rate
+post_window_retention_call,binary_post_window,indicador de llamada de retención posterior a la ventana objetivo,post_window,muy alto,posible fuga de información
+post_window_discount_amount,numeric_post_window,monto de descuento posterior a la ventana objetivo,post_window,muy alto,posible fuga de información
+future_spend_60d,target_semicontinuous,gasto futuro en la ventana de 60 días,target_window,n/a,objetivo semicontinuo con masa en cero

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Presentación W4</title>
+  <style>
+    @font-face {
+      font-family: "TsangerJinKai02";
+      src: url("assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
+    }
+    @page { size: 1920px 1080px; margin: 0; }
+    body { font-family: "TsangerJinKai02", serif; background: #f5f4ed; color: #141413; margin: 0; padding: 0; }
+    .slide { width: 1920px; height: 1080px; padding: 80px 100px; box-sizing: border-box; page-break-after: always; position: relative; }
+    h1 { font-size: 80px; color: #1B365D; border-bottom: 4px solid #1B365D; padding-bottom: 20px; }
+    h2 { font-size: 50px; color: #3d3d3a; margin-top: 40px; }
+    p, li { font-size: 40px; line-height: 1.6; color: #4d4c48; }
+    .meta { position: absolute; bottom: 50px; right: 100px; font-size: 30px; color: #87867f; }
+    .split { display: flex; gap: 60px; margin-top: 50px; }
+    .col { flex: 1; }
+    img { max-width: 100%; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1 -->
+  <div class="slide">
+    <h1>Tipo de Dato, Calidad y Representación</h1>
+    <h2>Sección 1 (4 min): Teoría y Ontología del Dato</h2>
+    <ul>
+      <li>No todo número es un escalar continuo $\mathbb{R}$.</li>
+      <li>Restricciones estructurales: Cíclicos (reloj), Composicionales (suma=1).</li>
+      <li>Mecanismos de faltantes: MCAR, MAR, MNAR y Estructurales (no aplica).</li>
+    </ul>
+    <div class="meta">Trabajo 4 · Anderson González</div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <h1>Evidencia Empírica de Representaciones</h1>
+    <h2>Sección 2 (7 min): El impacto de la geometría</h2>
+    <div class="split">
+      <div class="col">
+        <p><strong>Composiciones CLR:</strong> Corregimos correlaciones espurias negativas forzadas por la restricción multicanal.</p>
+        <p><strong>Codificación Cíclica:</strong> Corregimos el error euclidiano del salto 23h $ightarrow$ 0h mapeando al círculo trigonométrico.</p>
+      </div>
+      <div class="col">
+        <img src="salidas_W4/Figura_W4.3_ciclica_peak_hour.png" alt="Ciclica">
+      </div>
+    </div>
+    <div class="meta">Sección 2: Evidencia Empírica</div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <h1>Validación de Pipelines</h1>
+    <h2>Sección 3 (2 min): Ingenuo vs Coherente</h2>
+    <ul>
+      <li><strong>Ingenuo:</strong> Label encoder arbitrario, numéricos crudos, media para todo.</li>
+      <li><strong>Coherente:</strong> OHE, Sen/Cos, CLR, Imputación Iterativa e indicadores.</li>
+      <li><strong>Resultado:</strong> El pipeline coherente superó en ROC-AUC aislando los efectos semánticos de representación.</li>
+    </ul>
+    <div class="meta">Sección 3: Pipelines</div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide">
+    <h1>Tres Errores a Evitar</h1>
+    <h2>Sección 4 (2 min): Lecciones para el curso</h2>
+    <ol>
+      <li><strong>Imputar estructurales con la media:</strong> Destruye señales lógicas (no puedes promediar órdenes sin compras).</li>
+      <li><strong>Data Leakage del futuro:</strong> Incluir <code>post_window_discount</code> predice el futuro con el futuro.</li>
+      <li><strong>Operar sobre distribuciones Simplex brutas:</strong> Falsa colinealidad en canales compartidos.</li>
+    </ol>
+    <div class="meta">Sección 4: Lecciones</div>
+  </div>
+
+</body>
+</html>

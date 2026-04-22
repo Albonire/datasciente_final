@@ -456,16 +456,73 @@
   <div class="takeaway">
     <p><strong>3. Restricción Simplex en shares</strong></p>
     <p>Los canales forman una composición de suma=1. Si el uso Web sube, matemáticamente los otros deben bajar, creando correlaciones negativas espurias (Fig W4.2). Operar directamente con correlación de Pearson aquí viola la independencia. La transformación Centered Log Ratio (CLR) mapea estos datos al espacio real sin restricciones.</p>
+    <figure>
+    <svg viewBox="0 0 500 150" style="width:100%; max-width:500px; font-family:sans-serif;">
+      <rect x="20" y="30" width="140" height="80" rx="4" fill="#faf9f5" stroke="#87867f"/>
+      <text x="90" y="50" text-anchor="middle" font-size="12" fill="#5e5d59" font-weight="bold">Espacio Simplex</text>
+      <text x="90" y="70" text-anchor="middle" font-size="11" fill="#141413">w + m + s + p = 1</text>
+      <text x="90" y="90" text-anchor="middle" font-size="10" fill="#866350">Correlación Espuria</text>
+      
+      <path d="M 170 70 L 330 70" stroke="#1B365D" stroke-width="2" fill="none"/>
+      <polygon points="325,65 335,70 325,75" fill="#1B365D"/>
+      <text x="250" y="60" text-anchor="middle" font-size="10" fill="#1B365D">Log(x / MediaGeo(x))</text>
+      <text x="250" y="85" text-anchor="middle" font-size="9" fill="#87867f">Transformación CLR</text>
+
+      <rect x="340" y="30" width="140" height="80" rx="4" fill="#EEF2F7" stroke="#1B365D"/>
+      <text x="410" y="50" text-anchor="middle" font-size="12" fill="#1B365D" font-weight="bold">Espacio Real (ℝⁿ)</text>
+      <text x="410" y="70" text-anchor="middle" font-size="11" fill="#141413">-∞ &lt; x &lt; ∞</text>
+      <text x="410" y="90" text-anchor="middle" font-size="10" fill="#2E4057">Independencia Lineal</text>
+    </svg>
+    <figcaption>Diagrama Conceptual: Mapeo de composiciones al espacio real libre de restricciones.</figcaption>
+    </figure>
   </div>
   
   <div class="takeaway">
     <p><strong>4. Codificación cíclica temporal</strong></p>
     <p>En el dominio entero [0,23], la distancia euclidiana entre 23 y 0 es 23. En el tiempo real es 1 hora. Codificando en proyecciones Seno y Coseno, mapeamos el tiempo a un círculo bidimensional, garantizando distancias temporales coherentes (Fig W4.3).</p>
+    <figure>
+    <svg viewBox="0 0 300 150" style="width:100%; max-width:300px; font-family:sans-serif;">
+      <circle cx="150" cy="85" r="50" fill="none" stroke="#e8e6dc" stroke-width="2"/>
+      <circle cx="150" cy="35" r="5" fill="#1B365D"/>
+      <text x="150" y="25" text-anchor="middle" font-size="10" font-weight="bold">0h</text>
+      
+      <circle cx="125" cy="42" r="4" fill="#866350"/>
+      <text x="110" y="35" text-anchor="middle" font-size="10" fill="#866350">23h</text>
+      
+      <circle cx="175" cy="42" r="4" fill="#2E4057"/>
+      <text x="190" y="35" text-anchor="middle" font-size="10" fill="#2E4057">1h</text>
+      
+      <!-- Distance arrow between 23 and 0 -->
+      <path d="M 125 42 Q 137 25 147 33" stroke="#87867f" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+      <text x="120" y="15" font-size="9" fill="#5e5d59">Distancia real = 1 (¡No 23!)</text>
+    </svg>
+    <figcaption>Diagrama Conceptual: Geometría circular preservando la adyacencia temporal.</figcaption>
+    </figure>
   </div>
   
   <div class="takeaway">
     <p><strong>5. Faltante estructural de avg_order_value</strong></p>
     <p>La coincidencia exacta entre `is_null(avg_order)` y `transactions_90d == 0` demuestra que este "nulo" es lógico, no estadístico. Imputarlo con la media poblacional inventaría ingresos para clientes inactivos. Rellenar con 0 y agregar un indicador es la forma defensiva y lógicamente sensata de modelarlo.</p>
+    <figure>
+    <svg viewBox="0 0 400 120" style="width:100%; max-width:400px; font-family:sans-serif;">
+      <rect x="10" y="40" width="100" height="40" rx="4" fill="#f5f4ed" stroke="#87867f"/>
+      <text x="60" y="65" text-anchor="middle" font-size="12" fill="#141413">Transacciones = 0</text>
+      
+      <path d="M 110 60 L 145 60" stroke="#1B365D" stroke-width="2" fill="none"/>
+      <polygon points="140,55 150,60 140,65" fill="#1B365D"/>
+      
+      <rect x="155" y="40" width="115" height="40" rx="4" fill="#EEF2F7" stroke="#1B365D"/>
+      <text x="212" y="65" text-anchor="middle" font-size="12" fill="#1B365D">Valor Promedio = NULL</text>
+      
+      <path d="M 270 60 L 305 60" stroke="#87867f" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      <polygon points="300,55 310,60 300,65" fill="#87867f"/>
+      
+      <rect x="315" y="40" width="80" height="40" rx="4" fill="#E4ECF5" stroke="#5e5d59"/>
+      <text x="355" y="60" text-anchor="middle" font-size="11" fill="#141413">Faltante</text>
+      <text x="355" y="75" text-anchor="middle" font-size="11" fill="#141413">Estructural</text>
+    </svg>
+    <figcaption>Diagrama Conceptual: Dependencia causal directa de un faltante estructural.</figcaption>
+    </figure>
   </div>
 </section>
 

@@ -4,74 +4,246 @@
   <meta charset="UTF-8">
   <title>Presentación W4</title>
   <style>
+    /* KAMI SLIDES SYSTEM - Warm Parchment */
     @font-face {
       font-family: "TsangerJinKai02";
       src: url("assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
     }
-    @page { size: 1920px 1080px; margin: 0; }
-    body { font-family: "TsangerJinKai02", serif; background: #f5f4ed; color: #141413; margin: 0; padding: 0; }
-    .slide { width: 1920px; height: 1080px; padding: 80px 100px; box-sizing: border-box; page-break-after: always; position: relative; }
-    h1 { font-size: 80px; color: #1B365D; border-bottom: 4px solid #1B365D; padding-bottom: 20px; }
-    h2 { font-size: 50px; color: #3d3d3a; margin-top: 40px; }
-    p, li { font-size: 40px; line-height: 1.6; color: #4d4c48; }
-    .meta { position: absolute; bottom: 50px; right: 100px; font-size: 30px; color: #87867f; }
-    .split { display: flex; gap: 60px; margin-top: 50px; }
+    
+    :root {
+      --bg: #f5f4ed;
+      --text: #141413;
+      --brand: #1B365D;
+      --accent: #87867f;
+      --border: #e8e6dc;
+    }
+
+    @page { 
+      size: 1920px 1080px; 
+      margin: 0; 
+    }
+    
+    body { 
+      font-family: "TsangerJinKai02", serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      margin: 0; 
+      padding: 0; 
+      -webkit-print-color-adjust: exact;
+    }
+    
+    .slide { 
+      width: 1920px; 
+      height: 1080px; 
+      padding: 100px 120px; 
+      box-sizing: border-box; 
+      page-break-after: always; 
+      position: relative; 
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .title-slide {
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    h1 { 
+      font-size: 85px; 
+      color: var(--brand); 
+      border-bottom: 5px solid var(--brand); 
+      padding-bottom: 25px; 
+      margin-top: 0;
+      margin-bottom: 40px;
+      font-weight: normal;
+    }
+    
+    .title-slide h1 {
+      border-bottom: none;
+      font-size: 110px;
+      margin-bottom: 20px;
+    }
+
+    h2 { 
+      font-size: 55px; 
+      color: #3d3d3a; 
+      margin-top: 0;
+      margin-bottom: 50px;
+      font-weight: normal;
+    }
+    
+    p, li { 
+      font-size: 42px; 
+      line-height: 1.6; 
+      color: #4d4c48; 
+      margin-bottom: 25px;
+    }
+    
+    ul, ol { margin-left: 40px; }
+    
+    .meta { 
+      position: absolute; 
+      bottom: 60px; 
+      right: 120px; 
+      font-size: 32px; 
+      color: var(--accent); 
+      font-family: sans-serif;
+    }
+    
+    .split { 
+      display: flex; 
+      gap: 80px; 
+      flex-grow: 1;
+    }
+    
     .col { flex: 1; }
-    img { max-width: 100%; border-radius: 10px; }
+    
+    img { 
+      max-width: 100%; 
+      max-height: 800px; /* Aumentado de 600px a 800px */
+      border-radius: 12px; 
+      border: 1px solid var(--border);
+    }
+
+    /* Command Center Styles */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px; /* Reducido de 40px */
+      margin-top: 10px;
+    }
+
+    .card {
+      background: #faf9f5;
+      border: 2px solid var(--border);
+      border-left: 8px solid var(--brand);
+      padding: 25px; /* Reducido de 40px */
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      font-size: 38px; /* Reducido de 45px */
+      margin: 0 0 15px 0;
+      color: var(--brand);
+    }
+
+    .resource-link {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 30px; /* Reducido de 36px */
+      background: #eef2f7;
+      padding: 12px 24px; /* Reducido de 15px 30px */
+      border-radius: 6px;
+      margin: 8px 8px 8px 0;
+      border: 1px solid #dce4ee;
+    }
+    
+    .resource-link:hover {
+      background: var(--brand);
+      color: white;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Slide 1 -->
-  <div class="slide">
-    <h1>Tipo de Dato, Calidad y Representación</h1>
-    <h2>Sección 1 (4 min): Teoría y Ontología del Dato</h2>
-    <ul>
-      <li>No todo número es un escalar continuo $\mathbb{R}$.</li>
-      <li>Restricciones estructurales: Cíclicos (reloj), Composicionales (suma=1).</li>
-      <li>Mecanismos de faltantes: MCAR, MAR, MNAR y Estructurales (no aplica).</li>
-    </ul>
-    <div class="meta">Trabajo 4 · Anderson González</div>
+  <!-- Slide 1: Portada -->
+  <div class="slide title-slide">
+    <h1>Tipo de Dato, Calidad<br>y Representación</h1>
+    <h2>Análisis Empírico de Modelos Predictivos</h2>
+    <p style="font-size: 48px; color: var(--accent); margin-top: 50px;">Anderson González<br>Ciencia de Datos - Corte 1</p>
   </div>
 
-  <!-- Slide 2 -->
+  <!-- Slide 2: Teoría y Representación -->
   <div class="slide">
     <h1>Evidencia Empírica de Representaciones</h1>
-    <h2>Sección 2 (7 min): El impacto de la geometría</h2>
-    <div class="split">
-      <div class="col">
-        <p><strong>Composiciones CLR:</strong> Corregimos correlaciones espurias negativas forzadas por la restricción multicanal.</p>
-        <p><strong>Codificación Cíclica:</strong> Corregimos el error euclidiano del salto 23h $ightarrow$ 0h mapeando al círculo trigonométrico.</p>
+    <div class="split" style="align-items: center;">
+      <div class="col" style="flex: 0.8;">
+        <p><strong>Composiciones CLR:</strong> Corregimos correlaciones espurias negativas forzadas por la restricción multicanal (Simplex).</p>
+        <p><strong>Codificación Cíclica:</strong> Corregimos el error euclidiano del salto 23h $\rightarrow$ 0h mapeando al círculo trigonométrico.</p>
       </div>
-      <div class="col">
+      <div class="col" style="text-align: center; flex: 1.2;">
         <img src="salidas_W4/Figura_W4.3_ciclica_peak_hour.png" alt="Ciclica">
       </div>
     </div>
-    <div class="meta">Sección 2: Evidencia Empírica</div>
+    <div class="meta">Representación Semántica</div>
   </div>
 
-  <!-- Slide 3 -->
+  <!-- Slide 3: Pipelines -->
   <div class="slide">
     <h1>Validación de Pipelines</h1>
-    <h2>Sección 3 (2 min): Ingenuo vs Coherente</h2>
-    <ul>
-      <li><strong>Ingenuo:</strong> Label encoder arbitrario, numéricos crudos, media para todo.</li>
-      <li><strong>Coherente:</strong> OHE, Sen/Cos, CLR, Imputación Iterativa e indicadores.</li>
-      <li><strong>Resultado:</strong> El pipeline coherente superó en ROC-AUC aislando los efectos semánticos de representación.</li>
-    </ul>
-    <div class="meta">Sección 3: Pipelines</div>
+    <div class="split">
+      <div class="col">
+        <h2>Pipeline Ingenuo</h2>
+        <ul>
+          <li>Label encoder arbitrario</li>
+          <li>Variables en bruto</li>
+          <li>Imputación global (media)</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h2>Pipeline Coherente</h2>
+        <ul>
+          <li>One-Hot Encoding</li>
+          <li>Sen/Cos + Transformación CLR</li>
+          <li>Imputación condicionada + Indicadores Estructurales</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top: 40px; padding: 30px; background: #eef2f7; border-left: 6px solid var(--brand);"><strong>Resultado:</strong> El pipeline coherente superó en ROC-AUC aislando los efectos semánticos de representación, garantizando robustez ante datos futuros.</p>
+    <div class="meta">Pipelines y Resultados</div>
   </div>
 
-  <!-- Slide 4 -->
+  <!-- Slide 4: Errores a evitar -->
   <div class="slide">
-    <h1>Tres Errores a Evitar</h1>
-    <h2>Sección 4 (2 min): Lecciones para el curso</h2>
-    <ol>
-      <li><strong>Imputar estructurales con la media:</strong> Destruye señales lógicas (no puedes promediar órdenes sin compras).</li>
-      <li><strong>Data Leakage del futuro:</strong> Incluir <code>post_window_discount</code> predice el futuro con el futuro.</li>
-      <li><strong>Operar sobre distribuciones Simplex brutas:</strong> Falsa colinealidad en canales compartidos.</li>
+    <h1>Lecciones: Tres Errores a Evitar</h1>
+    <ol style="margin-top: 30px; gap: 30px; display: flex; flex-direction: column;">
+      <li><strong>Imputar estructurales con la media:</strong> Destruye señales lógicas. Es imposible y peligroso promediar órdenes financieras para clientes que no tienen transacciones previas.</li>
+      <li><strong>Data Leakage del futuro:</strong> Incluir variables post-ventana (ej. <code>post_window_discount</code>) equivale a adivinar el futuro usando el periódico de mañana. Arruina la validación.</li>
+      <li><strong>Operar sobre distribuciones Simplex brutas:</strong> Causa falsa colinealidad en canales compartidos que los modelos tradicionales no pueden gestionar sin la transformación de Logaritmo Centrado (CLR).</li>
     </ol>
-    <div class="meta">Sección 4: Lecciones</div>
+    <div class="meta">Conclusiones de la Práctica</div>
+  </div>
+
+  <!-- Slide 5: CENTRO DE MANDO -->
+  <div class="slide">
+    <h1>Centro de Mando (Anexos Técnicos)</h1>
+    <p style="margin-bottom: 20px;">Haga clic en cualquier recurso para acceder a los datos crudos y evidencia del trabajo.</p>
+    
+    <div class="dashboard-grid">
+      
+      <!-- Card 1: Tablas Oficiales -->
+      <div class="card">
+        <h3>📊 Matrices y Tablas</h3>
+        <a href="salidas_W4/Tabla_W4.1.csv" class="resource-link" target="_blank">W4.1 - Matriz de Tipos</a>
+        <a href="salidas_W4/Tabla_W4.2.csv" class="resource-link" target="_blank">W4.2 - Faltantes</a>
+        <a href="salidas_W4/Tabla_W4.3.csv" class="resource-link" target="_blank">W4.3 - ROC-AUC</a>
+      </div>
+
+      <!-- Card 2: Figuras Empíricas -->
+      <div class="card">
+        <h3>📈 Evidencia Visual (PNG)</h3>
+        <a href="salidas_W4/Figura_W4.1_frecuencias_nominales.png" class="resource-link" target="_blank">Fig. 1 - Categorías</a>
+        <a href="salidas_W4/Figura_W4.2_composicion_CLR.png" class="resource-link" target="_blank">Fig. 2 - CLR</a>
+        <a href="salidas_W4/Figura_W4.3_ciclica_peak_hour.png" class="resource-link" target="_blank">Fig. 3 - Cíclica</a>
+        <a href="salidas_W4/Figura_W4.4_faltante_avg_order.png" class="resource-link" target="_blank">Fig. 4 - Faltantes</a>
+      </div>
+
+      <!-- Card 3: Auditoría -->
+      <div class="card" style="grid-column: span 2; display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+          <h3>📋 Auditoría y Decisiones</h3>
+          <p style="font-size: 26px; margin: 0;">Registro minucioso de 9 decisiones metodológicas, incluyendo el reporte de los 90 duplicados removidos (Paso 0).</p>
+        </div>
+        <div>
+          <a href="bitacora_W4.csv" class="resource-link" style="background: var(--brand); color: white;" target="_blank">Abrir Bitácora Completa</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="meta">Recursos de Sustentación</div>
   </div>
 
 </body>

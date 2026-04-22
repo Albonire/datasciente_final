@@ -450,6 +450,11 @@
     <strong>Tu respuesta:</strong> "No, porque tenía que probar dos modelos diferentes (el ingenuo y el coherente). Los entrené con el 60% (Train). Luego, los hice pelear entre ellos usando el 20% (Validación). Cuando ya descubrí cuál era el ganador absoluto (el Coherente), le hice el examen final secreto con el último 20% (Prueba) para reportar la nota final del trabajo sin que el modelo pudiera sobreajustarse."
   </div>
 
+  <div class="callout">
+    <strong>Profesor:</strong> <em>"Anderson, veo que en la Tabla W4.3 la mejora del ROC-AUC entre el pipeline ingenuo y el coherente es muy pequeña (quizá solo subió un poquito). ¿Tanto esfuerzo matemático para subir tan poco la métrica? ¿Valió la pena?"</em><br><br>
+    <strong>Tu respuesta:</strong> "Totalmente, profe. En la vida real, hacer un modelo robusto no se trata de lograr saltos mágicos del 20% en precisión de la noche a la mañana en un dataset estático. El valor del Pipeline Coherente es la <strong>protección contra sesgos matemáticos a futuro</strong>. El pipeline ingenuo puede tener suerte hoy, pero está construido sobre ilusiones geométricas (ej. creyendo que la hora 23 y la hora 0 están lejísimos). Si mañana entran datos nuevos con distribuciones distintas, el modelo ingenuo fallará estrepitosamente. La mejora que vemos aquí es pura, no está contaminada por atajos, lo que garantiza que el modelo será estable si lo ponemos en producción."
+  </div>
+
   <p style="text-align: center; margin-top: 50px; font-size: 14pt; color: var(--brand);">¡Con esto estás listo, Anderson! Sal y demuéstrales lo que sabes.</p>
 </section>
 

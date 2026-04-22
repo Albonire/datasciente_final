@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guía Definitiva de Sustentación W4</title>
+  <style>
+    /* ==================================================================
+       KAMI STYLE - Warm parchment design system
+       ================================================================== */
+    @font-face {
+      font-family: "TsangerJinKai02";
+      src: url("W4_gonzalez/assets/fonts/TsangerJinKai02-W04.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --parchment:  #f5f4ed;
+      --ivory:      #faf9f5;
+      --near-black: #141413;
+      --olive:      #5e5d59;
+      --stone:      #87867f;
+      --brand:      #1B365D;
+      --brand-tint: #EEF2F7;
+      --border:     #e8e6dc;
+      --hl-yellow:  #fcf0c0;
+
+      --serif: "TsangerJinKai02", "Newsreader", "Source Han Serif SC", "Georgia", serif;
+      --sans:  "Inter", "Helvetica Neue", sans-serif;
+      --mono:  "JetBrains Mono", "SF Mono", monospace;
+    }
+
+    @page {
+      size: A4;
+      margin: 25mm 20mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: var(--sans);
+        font-size: 8pt;
+        color: var(--stone);
+      }
+    }
+
+    body {
+      background: var(--parchment);
+      color: var(--near-black);
+      font-family: var(--serif);
+      font-size: 11.5pt;
+      line-height: 1.65;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--near-black);
+      font-weight: 500;
+      line-height: 1.3;
+      margin-top: 2em;
+      margin-bottom: 0.8em;
+    }
+
+    h1 { font-size: 24pt; border-bottom: 1px solid var(--border); padding-bottom: 15px; color: var(--brand); }
+    h2 { font-size: 16pt; margin-top: 2.5em; border-left: 4px solid var(--brand); padding-left: 10px; }
+    h3 { font-size: 13pt; color: var(--olive); }
+
+    p { margin-bottom: 1.2em; }
+    strong { font-weight: 700; color: var(--brand); }
+    em { font-style: italic; color: var(--olive); }
+    
+    code {
+      font-family: var(--mono);
+      font-size: 0.85em;
+      background: rgba(27, 54, 93, 0.05);
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      color: var(--brand);
+    }
+
+    .cover {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      page-break-after: always;
+    }
+    .cover-eyebrow { font-family: var(--sans); font-size: 10pt; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .cover-title { font-size: 38pt; font-weight: 600; color: var(--brand); line-height: 1.1; margin-bottom: 30px; }
+    .cover-sub { font-size: 16pt; color: var(--olive); line-height: 1.4; margin-bottom: 60px; max-width: 80%; }
+    .cover-meta { font-family: var(--sans); font-size: 10pt; line-height: 1.8; color: var(--stone); border-top: 1px solid var(--border); padding-top: 20px; }
+
+    .toc { page-break-after: always; }
+    .toc h2 { border: none; padding: 0; }
+    .toc-item { display: flex; justify-content: space-between; margin-bottom: 15px; font-family: var(--sans); font-size: 10pt; }
+    .toc-num { color: var(--stone); width: 30px; font-family: var(--mono); }
+    .toc-title { flex-grow: 1; color: var(--near-black); }
+
+    .callout {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--brand);
+      padding: 20px 25px;
+      margin: 2em 0;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+    
+    .hl { background: var(--hl-yellow); padding: 0 4px; border-radius: 2px; }
+
+    ul, ol { margin-bottom: 1.5em; padding-left: 25px; }
+    li { margin-bottom: 0.5em; }
+
+    table { width: 100%; border-collapse: collapse; margin: 2em 0; font-family: var(--sans); font-size: 9pt; }
+    th { text-align: left; padding: 12px; border-bottom: 2px solid var(--brand); color: var(--brand); font-weight: 600; }
+    td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--olive); }
+    tr:nth-child(even) { background: var(--ivory); }
+
+    figure { margin: 2.5em 0; text-align: center; }
+    figcaption { margin-top: 15px; font-family: var(--sans); font-size: 9pt; color: var(--stone); }
+    svg { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 10px; }
+
+    .chapter { page-break-before: always; }
+    .chapter-num { font-family: var(--mono); font-size: 9pt; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: -1.5em; display: block; }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div>
+    <div class="cover-eyebrow">Guía Definitiva de Sustentación</div>
+    <div class="cover-title">Cero a Experto:<br>Trabajo 4</div>
+    <div class="cover-sub">Todo lo que necesitas saber, entender y decir para sustentar el proyecto con total seguridad. Explicado con manzanas.</div>
+  </div>
+  <div class="cover-meta">
+    <strong>Estudiante: Anderson González</strong><br>
+    Documento exclusivo para estudio y preparación oral.<br>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="toc">
+  <h2>Índice de Estudio</h2>
+  <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Introducción: ¿Qué demonios estamos haciendo?</span></div>
+  <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Diccionario de Supervivencia (Vocabulario Básico)</span></div>
+  <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">El Problema de los Faltantes (No todo nulo es igual)</span></div>
+  <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">La Trampa Matemática (Tipos de Datos)</span></div>
+  <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">El "Pipeline": El Ingenuo vs. El Coherente</span></div>
+  <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Las Métricas: ¿Cómo sabemos si ganamos?</span></div>
+  <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Simulador de Sustentación (Preguntas Trampa)</span></div>
+</section>
+
+
+<!-- 1. INTRODUCCIÓN -->
+<section class="chapter">
+  <span class="chapter-num">01 · Lo básico</span>
+  <h1>1. ¿Qué demonios estamos haciendo?</h1>
+  <p>Imagina que eres el dueño de una tienda. Tienes una lista enorme (10,090 filas) de todos los clientes que han pasado por tu negocio. Tienes datos sobre su edad, cuánto han comprado, desde qué canal llegaron (web, móvil) y a qué hora suelen comprar.</p>
+  <p><strong>El Objetivo del Trabajo:</strong> Tu profesor quiere que construyas un modelo predictivo (una bola de cristal estadística) para responder a una sola pregunta: <strong>¿Este cliente específico va a gastar dinero en los próximos 60 días? Sí o No.</strong></p>
+  
+  <p>Pero el profesor puso una <strong>trampa</strong> (la Pregunta Rectora del trabajo). La trampa es ver si le vas a entregar la información a la "bola de cristal" a lo bruto (Pipeline Ingenuo), o si vas a ser inteligente y vas a darle la información explicándole qué significa cada número (Pipeline Coherente).</p>
+
+  <div class="callout">
+    <strong>En resumen para la sustentación:</strong><br>
+    "Profesor, mi trabajo demuestra empíricamente que si a una inteligencia artificial le tiras los números a lo bruto, se equivoca. Si primero le explicas la geometría y el significado real de esos números, su poder de predicción aumenta."
+  </div>
+</section>
+
+
+<!-- 2. VOCABULARIO -->
+<section class="chapter">
+  <span class="chapter-num">02 · Glosario</span>
+  <h1>2. Diccionario de Supervivencia</h1>
+  <p>Si te pones nervioso y olvidas un término técnico, aquí está la traducción mental que debes hacer:</p>
+  <ul>
+    <li><strong>Target (Variable Objetivo):</strong> Es lo que intentamos predecir. En nuestro caso se llama <code>spend_positive</code>. Es 1 si el cliente gastó dinero, 0 si no gastó.</li>
+    <li><strong>Deduplicación (Paso 0):</strong> Resulta que en nuestra base de datos, el mismo cliente (`customer_id`) aparecía varias veces porque le tomaron "fotos" (snapshots) en diferentes días. Si metes clientes repetidos, el modelo hace trampa porque "se aprende" al cliente. Por eso, nos quedamos solo con la "foto" más reciente y <strong>borramos 90 filas repetidas</strong>.</li>
+    <li><strong>Data Leakage (Fuga de Información):</strong> Es hacer trampa leyendo el futuro. Imagina apostar en un partido de fútbol sabiendo el resultado final. En nuestro trabajo, las variables <code>post_window_retention_call</code> y <code>post_window_discount</code> ocurren <em>en el futuro</em>. Si el modelo las ve, saca 100% de nota, pero en la vida real no serviría para nada. Las tuvimos que eliminar desde el inicio.</li>
+    <li><strong>El Split (60/20/20):</strong> Nunca le muestras todo al modelo. Coges tus clientes y los divides:
+      <ul>
+        <li><strong>60% Train (Entrenamiento):</strong> Con esto el modelo estudia.</li>
+        <li><strong>20% Val (Validación):</strong> Con esto le haces el examen sorpresa (aquí comparamos el modelo malo vs el modelo bueno).</li>
+        <li><strong>20% Test (Prueba):</strong> Es el examen del Estado. Solo se usa una vez al final de todo el semestre para dar la nota final del modelo bueno.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+
+<!-- 3. FALTANTES -->
+<section class="chapter">
+  <span class="chapter-num">03 · Nulos</span>
+  <h1>3. El Problema de los Datos Faltantes (NaN)</h1>
+  <p>A veces faltan datos en nuestra tabla. Aparece un feo <code>NaN</code> o "Nulo". Pero <strong>no todos los nulos significan lo mismo</strong>. Si te preguntan por los "Mecanismos de Faltantes", debes responder con esta analogía médica de 4 niveles:</p>
+
+  <h3>1. MCAR (Missing Completely At Random) - "Completamente al azar"</h3>
+  <p><em>Analogía:</em> El doctor te tomó el examen de sangre, pero el tubo se le cayó al piso por accidente y se rompió. Faltó el dato por pura mala suerte.</p>
+  <p><em>En el trabajo:</em> <code>promo_open_rate_90d</code>. Faltó por error del sistema. Como es azar, podemos simplemente rellenarlo (imputarlo) con el promedio de todos y no pasa nada.</p>
+
+  <h3>2. MAR (Missing At Random) - "Faltante Condicionado"</h3>
+  <p><em>Analogía:</em> A los hombres mayores de 60 años se les olvida llenar la casilla de "Tipo de Sangre" en el formulario porque no ven las letras pequeñas. El dato falta, pero la culpa la tiene su edad (otra variable de la tabla).</p>
+  <p><em>En el trabajo:</em> <code>education_level</code>. Podemos adivinar el nivel de educación faltante mirando otras variables del cliente (sueldo, edad).</p>
+
+  <h3>3. MNAR (Missing Not At Random) - "Faltante por Vergüenza"</h3>
+  <p><em>Analogía:</em> Le preguntas el peso a alguien en una encuesta. La gente que pesa más de 120 kilos es la que más decide dejar la pregunta en blanco por vergüenza. ¡El dato falta JUSTAMENTE por el valor que falta!</p>
+  <p><em>En el trabajo:</em> <code>satisfaction_score</code>. Los clientes más furiosos con la empresa son los que no contestan la encuesta. Rellenar esto con el "promedio" (decir que son clientes neutrales) es un error gravísimo. Hay que marcar con un indicador binario ("Cuidado: Este tipo no quiso responder").</p>
+
+  <h3>4. Estructural - "No Aplica"</h3>
+  <p><em>Analogía:</em> Le preguntas a un hombre calvo "qué marca de champú usa". La respuesta no es que se le perdió el dato, la respuesta es "No Aplica. Soy calvo".</p>
+  <p><em>En el trabajo:</em> <code>avg_order_value_90d</code> (Valor promedio de compra). Si el cliente tiene cero transacciones (<code>transactions_90d == 0</code>), es imposible que tenga un promedio de compra. No es que "no sabemos su promedio", es que <strong>no existe</strong>. Rellenar esto con el promedio poblacional significa inventarle dinero a clientes inactivos. Se rellena con cero y se crea una columna de advertencia.</p>
+</section>
+
+
+<!-- 4. TIPOS DE DATOS -->
+<section class="chapter">
+  <span class="chapter-num">04 · La Trampa Matemática</span>
+  <h1>4. La Trampa de los Tipos de Datos (Muy Importante)</h1>
+  <p>Esta es la carnita del trabajo. Tienes que convencer al profesor de que <strong>no puedes tratar a todos los números igual</strong>. Aquí están las explicaciones intuitivas para los "Razonamientos Obligatorios".</p>
+
+  <h3>A. Variables Nominales (Ej. Región, Tipo de Plan)</h3>
+  <p>Imagina que tienes tres ciudades: Norte, Sur, Este.</p>
+  <p><strong>El error (Pipeline Ingenuo):</strong> Decirle al computador que Norte=1, Sur=2, Este=3. ¿Por qué es un error? Porque el computador no sabe leer español, solo sabe matemáticas. Él va a creer que "Sur vale el doble que Norte" (porque 2 es el doble de 1). Va a creer que "Sur está a la mitad de Norte y Este". Esto es basura geométrica.</p>
+  <p><strong>La solución (Pipeline Coherente):</strong> <em>One-Hot Encoding (OHE)</em>. Rompemos la columna en tres columnas de "Verdadero o Falso". ¿Eres del Norte? 1 o 0. ¿Eres del Sur? 1 o 0. Así el computador no se confunde.</p>
+
+  <h3>B. Variables Cíclicas (Ej. La hora del día)</h3>
+  <p>Nuestra variable <code>peak_hour_local</code> va de 0 a 23 horas.</p>
+  <p><strong>El error:</strong> Meterle el número de 0 a 23 al computador. Si un cliente compra a las 23:00 (11 de la noche) y otro compra a las 00:00 (medianoche), en la vida real <strong>solo hay una hora de diferencia</strong>. Pero en matemáticas, 23 y 0 están a 23 números de distancia. El modelo pensará que son clientes totalmente opuestos.</p>
+  <p><strong>La solución:</strong> <em>Seno y Coseno</em>. Coges la línea de tiempo y la doblas formando un reloj circular (usando trigonometría). Así, la hora 23 y la hora 0 quedan una al lado de la otra físicamente en el círculo.</p>
+  <figure>
+    <svg viewBox="0 0 300 150" style="width:100%; max-width:300px;">
+      <circle cx="150" cy="85" r="50" fill="none" stroke="#e8e6dc" stroke-width="2"/>
+      <circle cx="150" cy="35" r="5" fill="#1B365D"/>
+      <text x="150" y="25" text-anchor="middle" font-size="10" font-weight="bold">0h</text>
+      <circle cx="125" cy="42" r="4" fill="#866350"/>
+      <text x="110" y="35" text-anchor="middle" font-size="10" fill="#866350">23h</text>
+      <path d="M 125 42 Q 137 25 147 33" stroke="#87867f" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+      <text x="120" y="15" font-size="9" fill="#5e5d59">Distancia real = 1 (No 23)</text>
+    </svg>
+    <figcaption>Un reloj es un círculo, no una línea recta.</figcaption>
+  </figure>
+
+  <h3>C. Variables Composicionales (Ej. Share Web, Share Mobile...)</h3>
+  <p>Esta es la parte más avanzada. Tienes 4 canales de venta que suman el 100% de las compras de un cliente (web + app + partner + tienda = 1). Esto se llama una <strong>restricción Simplex</strong>.</p>
+  <p><strong>El error:</strong> Como suman 1 (o 100%), si un cliente usa un 90% la Web, <em>obligatoriamente</em> tiene que usar menos los otros canales para que la suma no pase de 100. Esto hace que el modelo crea que hay una "Correlación Negativa" fuerte (si uno sube, el otro baja). Pero no es real, ¡es forzado por la matemática!</p>
+  <p><strong>La solución:</strong> <em>CLR (Centered Log Ratio)</em>. Usamos un logaritmo loco que destruye esa regla del "100%", liberando a los números para que el modelo pueda analizarlos sin ataduras.</p>
+</section>
+
+
+<!-- 5. PIPELINES -->
+<section class="chapter">
+  <span class="chapter-num">05 · La Implementación</span>
+  <h1>5. El Pipeline: Ingenuo vs. Coherente</h1>
+  <p>Para probar todo lo anterior, construimos dos fábricas (pipelines) en Python y pasamos los mismos datos por ambas.</p>
+  
+  <table>
+    <tr>
+      <th>Característica</th>
+      <th>Pipeline Ingenuo (Lo que NO se debe hacer)</th>
+      <th>Pipeline Coherente (Lo que SÍ hicimos)</th>
+    </tr>
+    <tr>
+      <td>Categorías (Región)</td>
+      <td>Label Encoding (1, 2, 3...)</td>
+      <td>One-Hot Encoding (Indicadores 1/0)</td>
+    </tr>
+    <tr>
+      <td>Canales (Shares)</td>
+      <td>Se metieron crudos</td>
+      <td>Se transformaron con CLR</td>
+    </tr>
+    <tr>
+      <td>La hora del día</td>
+      <td>Se dejó como número del 0 al 23</td>
+      <td>Se dobló en un reloj con Seno y Coseno</td>
+    </tr>
+    <tr>
+      <td>Faltantes (NaN)</td>
+      <td>Se rellenó absolutamente TODO con el promedio, incluso a los inactivos.</td>
+      <td>Se usaron modelos predictivos para los MAR, y se inyectaron ceros con banderas rojas de advertencia para los estructurales.</td>
+    </tr>
+  </table>
+</section>
+
+
+<!-- 6. MÉTRICAS -->
+<section class="chapter">
+  <span class="chapter-num">06 · Resultados</span>
+  <h1>6. Las Métricas (ROC-AUC)</h1>
+  <p>Al final, pusimos a los dos modelos a dar su examen de "Validación".</p>
+  <p>La métrica que más le importa a tu profesor es el <strong>ROC-AUC</strong> (Área Bajo la Curva de la Característica Operativa del Receptor).</p>
+  <p><strong>¿Qué rayos es el ROC-AUC en español?</strong><br>
+  Imagina que el modelo hace una lista de clientes ordenados del que <em>más probabilidad</em> tiene de comprar al que <em>menos</em>. El ROC-AUC califica qué tan perfecto es ese ordenamiento.
+  <ul>
+    <li>0.50 significa que el modelo lanza una moneda al aire. (Basura).</li>
+    <li>1.00 significa que el modelo es Dios y jamás se equivoca. (Imposible en la vida real).</li>
+  </ul>
+  </p>
+  <div class="callout">
+    <strong>El veredicto empírico:</strong> En el archivo `Tabla_W4.3.csv`, vemos que el Pipeline Coherente sacó un ROC-AUC mejor que el Ingenuo. Demostramos matemáticamente que <strong>tratar bien a los datos, los hace más predecibles</strong>.
+  </div>
+</section>
+
+
+<!-- 7. SIMULADOR -->
+<section class="chapter">
+  <span class="chapter-num">07 · Examen Final</span>
+  <h1>7. Simulador de Sustentación (Preguntas Trampa)</h1>
+  <p>Siéntate, respira y memoriza estas respuestas. Si el profesor te hace alguna de estas preguntas, tendrás la respuesta de un ingeniero senior.</p>
+
+  <div class="callout">
+    <strong>Profesor:</strong> <em>"Anderson, ¿por qué no metió la variable `post_window_discount_amount` si era tan buena para predecir?"</em><br><br>
+    <strong>Tu respuesta:</strong> "Porque es una variable del futuro, profe. Ocurre después de los 60 días. Si la incluyo cometo un <em>Data Leakage</em> masivo. Sería como adivinar qué equipo ganó el partido leyendo el periódico de mañana. El modelo tendría un accuracy de 99% pero en producción sería totalmente inútil."
+  </div>
+
+  <div class="callout">
+    <strong>Profesor:</strong> <em>"Si un cliente tiene un `avg_order_value_90d` nulo, ¿por qué simplemente no le pusiste la media de compra de todos los demás?"</em><br><br>
+    <strong>Tu respuesta:</strong> "Porque no es un faltante estadístico, profe. Es un faltante <strong>estructural</strong>. Comprobé cruzando variables que el 100% de esos nulos tenían cero transacciones (<code>transactions == 0</code>). Si le imputo la media, le estoy inyectando ingresos falsos a la empresa provenientes de clientes que no nos compran. Eso arruinaría las predicciones de ventas. Lo correcto fue ponerle 0 y añadir un indicador binario (una bandera) al modelo."
+  </div>
+
+  <div class="callout">
+    <strong>Profesor:</strong> <em>"¿Qué es eso de CLR y por qué se lo aplicaste a los shares de la web y el móvil?"</em><br><br>
+    <strong>Tu respuesta:</strong> "Porque las variables de porcentaje ('shares') forman una composición matemática; siempre suman 1. Esa restricción de sumar 1 hace que no sean independientes y genera correlaciones negativas espurias o falsas. La transformación CLR (Centered Log Ratio) usa logaritmos para romper esa restricción y mapear los datos al espacio real, donde los modelos de Scikit-Learn sí pueden operar sin sesgos geométricos."
+  </div>
+
+  <div class="callout">
+    <strong>Profesor:</strong> <em>"¿Para qué hiciste la partición 60/20/20? ¿No era mejor hacerla solo 80/20?"</em><br><br>
+    <strong>Tu respuesta:</strong> "No, porque tenía que probar dos modelos diferentes (el ingenuo y el coherente). Los entrené con el 60% (Train). Luego, los hice pelear entre ellos usando el 20% (Validación). Cuando ya descubrí cuál era el ganador absoluto (el Coherente), le hice el examen final secreto con el último 20% (Prueba) para reportar la nota final del trabajo sin que el modelo pudiera sobreajustarse."
+  </div>
+
+  <p>¡Con esto estás listo, Anderson! Imprime esta guía, léela un par de veces, y saldrás con la nota máxima.</p>
+</section>
+
+</body>
+</html>

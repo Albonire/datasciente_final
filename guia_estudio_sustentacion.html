@@ -163,7 +163,8 @@
   <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">La Trampa Matemática (Tipos de Datos)</span></div>
   <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">El "Pipeline": El Ingenuo vs. El Coherente</span></div>
   <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Las Métricas: ¿Cómo sabemos si ganamos?</span></div>
-  <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Simulador de Sustentación (Preguntas Trampa)</span></div>
+  <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Evidencia Visual (Gráficos y Tablas)</span></div>
+  <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Simulador de Sustentación (Preguntas Trampa)</span></div>
 </section>
 
 
@@ -423,11 +424,56 @@
   </div>
 </section>
 
-
-<!-- 7. SIMULADOR -->
+<!-- 7. EVIDENCIA EMPÍRICA -->
 <section class="chapter">
-  <span class="chapter-num">07 · Examen Final</span>
-  <h1>7. Simulador de Sustentación (Preguntas Trampa)</h1>
+  <span class="chapter-num">07 · Los Entregables</span>
+  <h1>7. Entendiendo la Evidencia (Gráficas y Tablas)</h1>
+  <p>Durante tu sustentación, puedes usar el "Centro de Mando" de tus diapositivas para abrir los archivos crudos generados. Aquí te explico exactamente qué muestra cada uno para que los defiendas con propiedad.</p>
+
+  <h3>A. Tabla W4.1 - Matriz de Tipos de Datos</h3>
+  <p><strong>Qué es:</strong> Un archivo CSV (`salidas_W4/Tabla_W4.1.csv`) que clasifica cada variable. <br>
+  <strong>Para qué sirve:</strong> Demuestra que revisaste cada variable a mano. Muestra si una variable es "Continua", "Nominal", "Ordinal" o "Cíclica". Si el profesor pregunta "¿Cómo sabías que peak_hour era cíclica?", le muestras esta tabla; fue tu plano de arquitectura inicial.</p>
+
+  <h3>B. Tabla W4.2 - Auditoría de Calidad (Faltantes)</h3>
+  <p><strong>Qué es:</strong> Un CSV (`salidas_W4/Tabla_W4.2.csv`) que reporta el porcentaje exacto de nulos (NaN) en cada columna y su diagnóstico. <br>
+  <strong>Para qué sirve:</strong> Aquí es donde documentaste si un nulo era MCAR, MAR, MNAR o Estructural. Es tu defensa empírica antes de imputar a lo loco.</p>
+
+  <h3>C. Las 4 Figuras de Python (Tus gráficos)</h3>
+  
+  <div style="margin-top: 30px;">
+    <strong>Figura 1: Categorías (Frecuencias Nominales)</strong><br>
+    <img src="W4_gonzalez/salidas_W4/Figura_W4.1_frecuencias_nominales.png" style="width:100%; border-radius:8px; border:1px solid #242424; margin-top:10px;">
+    <p><em>Explicación:</em> Muestra barras de conteo para variables de texto (ej. región). Sirve para identificar si hay categorías "raras" o muy pequeñas que el modelo podría ignorar. Con base en esto se decide usar <em>One-Hot Encoding</em>.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <strong>Figura 2: Transformación CLR (El espacio Simplex)</strong><br>
+    <img src="W4_gonzalez/salidas_W4/Figura_W4.2_composicion_CLR.png" style="width:100%; border-radius:8px; border:1px solid #242424; margin-top:10px;">
+    <p><em>Explicación:</em> Muestra dos mapas de calor. El de la izquierda muestra los "shares" (porcentajes) crudos llenos de correlaciones rojas oscuras falsas (porque todos suman 100%). El de la derecha muestra los datos transformados por el logaritmo CLR, donde la restricción desaparece y el modelo puede ver las relaciones reales y limpias.</p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <strong>Figura 3: Codificación Cíclica (La Hora)</strong><br>
+    <img src="W4_gonzalez/salidas_W4/Figura_W4.3_ciclica_peak_hour.png" style="width:100%; border-radius:8px; border:1px solid #242424; margin-top:10px;">
+    <p><em>Explicación:</em> A la izquierda, un histograma plano engañoso (línea recta de 0 a 23). A la derecha, el círculo trigonométrico (Seno y Coseno) que le entregas al "Pipeline Coherente" para que entienda que la hora 23 y la 0 son vecinas.</p>
+  </div>
+
+  <div style="margin-top: 30px; page-break-inside: avoid;">
+    <strong>Figura 4: Faltante Estructural vs. Compras</strong><br>
+    <img src="W4_gonzalez/salidas_W4/Figura_W4.4_faltante_avg_order.png" style="width:100%; border-radius:8px; border:1px solid #242424; margin-top:10px;">
+    <p><em>Explicación:</em> La gráfica que te hace ganar la materia. Muestra la distribución del valor promedio de compra (<code>avg_order_value_90d</code>). En la barra roja gigante separada a la izquierda, demostramos que todos los "Nulos" coinciden perfectamente con los clientes que tienen 0 transacciones. <strong>Demostración visual absoluta de un nulo estructural.</strong> Por eso no los rellenamos con la media global (que arruinaría la curva de la derecha).</p>
+  </div>
+
+  <h3>D. Tabla W4.3 - Resultados ROC-AUC y Bitácora</h3>
+  <p><strong>Tabla W4.3:</strong> Es la confirmación de que el esfuerzo valió la pena, mostrando la métrica final de ambos pipelines.<br>
+  <strong>Bitácora (<code>bitacora_W4.csv</code>):</strong> Tu diario de campo. Contiene 9 filas explicando el por qué de todo. Si te preguntan <em>"¿Por qué borraste datos?"</em>, muestras la fila 1 de tu bitácora que dice que eran 90 duplicados.</p>
+</section>
+
+
+<!-- 8. SIMULADOR -->
+<section class="chapter">
+  <span class="chapter-num">08 · Examen Final</span>
+  <h1>8. Simulador de Sustentación (Preguntas Trampa)</h1>
   <p>Siéntate, respira y memoriza estas respuestas. Si el profesor te hace alguna de estas preguntas, tendrás la respuesta de un ingeniero senior.</p>
 
   <div class="callout">

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organización del Trabajo - Anderson González</title>
+    <style>
+        @font-face {
+            font-family: 'TsangerJinKai02';
+            src: url('W4_gonzalez/assets/fonts/TsangerJinKai02-W04.ttf') format('truetype');
+        }
+
+        :root {
+            --parchment: #f5f4ed;
+            --ink-blue: #1B365D;
+            --stone: #87867f;
+            --serif: 'TsangerJinKai02', 'Newsreader', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+            background-color: var(--parchment);
+        }
+
+        body {
+            background-color: var(--parchment);
+            color: var(--ink-blue);
+            font-family: var(--serif);
+            font-size: 11pt;
+            line-height: 1.6;
+            margin: 0;
+            padding: 25mm 20mm;
+            min-height: 297mm; /* Ensure background covers full page */
+            box-sizing: border-box;
+        }
+
+        header {
+            border-bottom: 2px solid var(--ink-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .eyebrow {
+            font-family: var(--sans);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 8pt;
+            color: var(--stone);
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            color: var(--ink-blue);
+            font-size: 26pt;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .meta {
+            font-family: var(--sans);
+            font-size: 9pt;
+            color: var(--stone);
+            margin-top: 10px;
+        }
+
+        h2 {
+            font-family: var(--sans);
+            text-transform: uppercase;
+            font-size: 10pt;
+            letter-spacing: 0.1em;
+            color: var(--stone);
+            border-bottom: 1px solid #e8e6dc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .folder-tree {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9pt;
+            background: rgba(27, 54, 93, 0.05);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            white-space: pre;
+        }
+
+        .file-item {
+            margin-bottom: 15px;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: var(--ink-blue);
+            font-family: var(--sans);
+            font-size: 10pt;
+        }
+
+        .file-desc {
+            font-size: 10pt;
+            color: #4d4c48;
+            margin-left: 10px;
+            display: block;
+        }
+
+        .highlight {
+            background-color: rgba(27, 54, 93, 0.08);
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-family: var(--sans);
+            font-size: 8pt;
+            color: var(--stone);
+            text-align: center;
+            border-top: 1px solid #e8e6dc;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="eyebrow">Guía de Navegación del Proyecto</div>
+        <h1>Organización del Trabajo 4</h1>
+        <div class="meta">
+            Ciencia de Datos - Corte 1 | Estudiante: Anderson González | Profesor: Omar Portilla
+        </div>
+    </header>
+
+    <p>Este documento sirve como mapa para facilitar la revisión de los archivos generados en el marco del <strong>Trabajo 4: Tipo de dato, calidad y representación</strong>.</p>
+
+    <h2>Estructura de Directorios</h2>
+    <div class="folder-tree">
+.
+├── W4_gonzalez/           # Directorio principal de entrega
+│   ├── informe_W4.pdf      # Informe técnico consolidado
+│   ├── socializacion_W4.pdf # Diapositivas para sustentación
+│   ├── bitacora_W4.csv     # Registro de decisiones metodológicas
+│   ├── codigo_W4/          # Scripts maestros de Python
+│   └── salidas_W4/         # Tablas (CSV) y Figuras (PNG)
+├── _recursos/             # Archivos fuente originales
+├── guia_estudio_sustentacion.pdf # Guía de estudio didáctica
+└── organizacion_trabajo.pdf      # Este documento
+    </div>
+
+    <h2>Descripción de Entregables Clave</h2>
+
+    <div class="file-item">
+        <span class="file-name">W4_gonzalez/informe_W4.pdf</span>
+        <span class="file-desc">Documento maestro con la sustentación teórica, análisis de faltantes y comparación de pipelines.</span>
+    </div>
+
+    <div class="file-item">
+        <span class="file-name">W4_gonzalez/bitacora_W4.csv</span>
+        <span class="file-desc">Contiene las <span class="highlight">9 decisiones fundamentales</span> tomadas durante el preprocesamiento, incluyendo la deduplicación de 90 registros.</span>
+    </div>
+
+    <div class="file-item">
+        <span class="file-name">W4_gonzalez/codigo_W4/</span>
+        <span class="file-desc">Scripts modulares (00_setup a 04_resultados) que garantizan la reproducibilidad total del experimento.</span>
+    </div>
+
+    <div class="file-item">
+        <span class="file-name">W4_gonzalez/salidas_W4/</span>
+        <span class="file-desc">Almacena las evidencias gráficas obligatorias (Figura W4.1 a W4.4) y tablas de resultados cuantitativos.</span>
+    </div>
+
+    <div class="file-item">
+        <span class="file-name">guia_estudio_sustentacion.pdf</span>
+        <span class="file-desc">Material de apoyo diseñado para explicar conceptos complejos (CLR, Simplex, Cíclicos) mediante analogías.</span>
+    </div>
+
+    <footer>
+        Anderson González | fabianagcris@gmail.com | Universidad de Pamplona
+    </footer>
+</body>
+</html>
